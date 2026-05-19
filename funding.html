@@ -2,7 +2,12 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PT Capital">
+<meta name="format-detection" content="telephone=no">
 <title>Personal-Training · Capital Plan</title>
 <meta name="description" content="起步资金规划 · 三档方案对照（A 融资 / B 亲友 / C 极简）">
 <meta name="robots" content="noindex,nofollow">
@@ -46,7 +51,13 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
   }
+
+  a, button { -webkit-tap-highlight-color: transparent; }
 
   body::before {
     content: '';
@@ -59,7 +70,12 @@
       repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(255, 255, 255, 0.008) 2px, rgba(255, 255, 255, 0.008) 4px);
   }
 
-  .page { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+  .page {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding-left: max(40px, env(safe-area-inset-left));
+    padding-right: max(40px, env(safe-area-inset-right));
+  }
 
   /* ─────────── Marker Bar ─────────── */
   .marker-bar {
@@ -847,6 +863,74 @@
     .ledger-running { display: none; }
     .matrix { font-size: 12px; }
     .matrix th, .matrix td { padding: 10px; }
+  }
+
+  /* ────────────── iPhone (< 480px) ────────────── */
+  @media (max-width: 480px) {
+    .page { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+    .marker-bar-inner { padding: 12px 20px; gap: 6px; font-size: 10px; }
+    .marker-bar .breadcrumb { font-size: 10px; }
+
+    .hero { padding: 44px 0 32px; }
+    .hero h1 { font-size: 60px; line-height: 0.86; margin-bottom: 18px; }
+    .hero-sub { font-size: 14.5px; margin-bottom: 40px; }
+    .hero-tag { font-size: 10px; margin-bottom: 20px; }
+
+    .tier-board { margin-bottom: 36px; }
+    .tier { padding: 24px 22px 24px; }
+    .tier-amount { font-size: 64px; }
+    .tier.recommended::before { font-size: 9px; top: 12px; right: 14px; padding: 2px 7px; }
+    .tier-name { font-size: 10px; margin-bottom: 18px; }
+    .tier-stats { gap: 12px 16px; margin-top: 18px; padding-top: 16px; }
+    .tier-stat-value { font-size: 18px; }
+    .tier-summary { font-size: 12.5px; margin-top: 18px; }
+
+    section { margin-bottom: 56px; }
+    .section-head { gap: 14px; margin-bottom: 28px; padding-bottom: 18px; }
+    .section-num { font-size: 40px; }
+    .section-head h2 { font-size: 26px; }
+
+    h3 { font-size: 19px; margin: 28px 0 14px; }
+    h3::before { width: 14px; margin-right: 10px; }
+    h4 { font-size: 11px; margin: 22px 0 10px; }
+    p, li { font-size: 14.5px; }
+    li { padding-left: 18px; }
+
+    .ledger-row, .ledger-total { padding: 12px 16px; gap: 12px; }
+    .ledger-row { font-size: 12.5px; }
+    .ledger-amount { font-size: 12px; min-width: 100px; }
+    .ledger-total .ledger-item { font-size: 15px; }
+    .ledger-total .ledger-amount { font-size: 16px; min-width: 100px; }
+
+    /* matrix table: horizontal scroll on iPhone */
+    .matrix { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 11.5px; }
+    .matrix thead, .matrix tbody { display: table; min-width: 100%; }
+    .matrix th, .matrix td { padding: 9px 10px; }
+    .matrix th.tier-col .col-label { font-size: 16px; }
+    .matrix th.tier-col .col-sub { font-size: 9px; }
+    .matrix tr.total-row td { font-size: 14px; padding: 14px 10px; }
+    .matrix tr.total-row td.num { font-size: 16px; }
+
+    .burn-card { padding: 22px 20px; }
+    .burn-title { font-size: 19px; margin-bottom: 14px; }
+    .burn-line { font-size: 12.5px; }
+    .burn-sum .total { font-size: 22px; }
+
+    .profile { padding: 24px 22px; }
+    .profile-letter { font-size: 48px; }
+    .profile p, .profile li { font-size: 12.5px; }
+    .profile ul { padding-left: 0; }
+    .profile li { padding-left: 18px; }
+
+    .decision-table th, .decision-table td { padding: 14px 16px; }
+    .decision-table td:first-child { font-size: 13.5px; }
+    .decision-table td:last-child { font-size: 15px; }
+
+    .callout { padding: 18px 20px; }
+    .callout-label { font-size: 9.5px; }
+
+    footer { padding: 36px 0 48px; margin-top: 60px; }
+    .footer-mark { font-size: 24px; }
   }
 
   /* ─────────── Print ─────────── */
