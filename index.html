@@ -1632,6 +1632,54 @@ M7–M12 · 12 ~ 2027-05       Phase 2 上线（多租户 + 计费）</pre>
     </div>
   </div>
 
+  <h3>从用户到收入 · 加权 ARPU 拆解</h3>
+
+  <p>1,100 教练如何变成 ¥118.8w ARR？每个注册教练（含 Free）月均贡献 ~¥90：</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>定价档</th><th class="num">月费</th><th class="num">分布</th><th class="num">加权贡献</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Free（试用）</td><td class="num">¥0</td><td class="num">30%</td><td class="num">¥0</td></tr>
+      <tr><td><strong>Pro 99（主力档）</strong></td><td class="num heat-cell"><strong>¥99</strong></td><td class="num heat-cell"><strong>50%</strong></td><td class="num heat-cell"><strong>¥49.5</strong></td></tr>
+      <tr><td>Pro 149</td><td class="num">¥149</td><td class="num">15%</td><td class="num">¥22.4</td></tr>
+      <tr><td>Studio 499</td><td class="num">¥499</td><td class="num">5%</td><td class="num">¥25.0</td></tr>
+      <tr><td><strong>加权 ARPU</strong></td><td class="num">×</td><td class="num">100%</td><td class="num heat-cell"><strong>¥96.9 ≈ ¥90</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-label">核心公式</div>
+    <p style="margin:0; font-family:var(--mono); line-height:1.9;">
+      <span style="background:var(--surface-2); padding:3px 10px; color:var(--heat);">MRR = 教练数 × ¥90 加权 ARPU</span><br>
+      <span style="background:var(--surface-2); padding:3px 10px; color:var(--heat);">ARR = MRR × 12</span>
+    </p>
+    <p style="margin:14px 0 0;"><strong>Base case M36：</strong>1,100 教练 × ¥90 × 12 = <strong style="color:var(--heat); font-size:18px;">¥118.8w ARR</strong> ✓</p>
+  </div>
+
+  <h3>获客漏斗 · Base Case 每月</h3>
+
+  <pre>触达池                       ~500 教练 / 月
+  ├ 小红书 / 知乎内容 ...... 200
+  ├ KOL 合作 ...............  80
+  ├ 教练社群 ...............  70
+  ├ 赛事地推 ............... 150
+  └ 转介绍 .................  ~50（M6+ 起飞）
+                ↓  12% 综合转化（点击 → 试用）
+            60 教练 / 月 试用注册
+                ↓  70% 完成 onboarding
+            42 active free user
+                ↓  Free → Paid 转化 25–35%
+            30 教练 / 月 升级付费
+                ↓  减去 6% 月流失
+            净增长 ≈ 25 教练 / 月</pre>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 关键瓶颈</div>
+    <p style="margin:0">最大不确定<strong>不在触达池大小</strong>——而是 <strong>Free → Paid 转化率</strong>。若仅 15%（vs 假设 30%），M36 ARR 跌至 <strong>¥60w</strong>。MVP 上线 M3 的首批 30 教练真实付费数据会校准这个核心参数。</p>
+  </div>
+
   <div class="chart">
     <div class="chart-title">Trajectory · 36-month</div>
     <div class="chart-subtitle">Paid Coaches Growth</div>
