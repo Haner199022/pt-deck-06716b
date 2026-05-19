@@ -1427,10 +1427,202 @@
   </div>
 </section>
 
-<!-- ═══════════════════ §5 ═══════════════════ -->
+<!-- ═══════════════════ §5 NEW · Revenue Model ═══════════════════ -->
 <section>
   <div class="section-head">
     <div class="section-num">05</div>
+    <div class="section-meta">
+      <div class="section-kicker">Revenue Model</div>
+      <h2>用户与收入测算</h2>
+    </div>
+  </div>
+
+  <p>把"花了 ¥XXw"翻译成"赚回 ¥XXw"——拆开看每个月的<strong>教练数怎么变成 MRR</strong>。</p>
+
+  <h3>定价分布 · 加权 ARPU</h3>
+
+  <p>4 档定价 × 用户分布 = 加权 ARPU。Base case 假设的分布：</p>
+
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th>定价档</th>
+        <th class="num">月费</th>
+        <th class="num">分布占比</th>
+        <th class="num">加权贡献</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="row-label">Free（试用）</td>
+        <td class="num">¥0</td>
+        <td class="num">30%</td>
+        <td class="num">¥0</td>
+      </tr>
+      <tr>
+        <td class="row-label">Pro 99（主力档）</td>
+        <td class="num heat">¥99</td>
+        <td class="num heat">50%</td>
+        <td class="num heat">¥49.5</td>
+      </tr>
+      <tr>
+        <td class="row-label">Pro 149</td>
+        <td class="num">¥149</td>
+        <td class="num">15%</td>
+        <td class="num">¥22.4</td>
+      </tr>
+      <tr>
+        <td class="row-label">Studio 499</td>
+        <td class="num">¥499</td>
+        <td class="num">5%</td>
+        <td class="num">¥25.0</td>
+      </tr>
+      <tr class="total-row">
+        <td>加权 ARPU</td>
+        <td class="num">×</td>
+        <td class="num">100%</td>
+        <td class="num">¥96.9</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-label">简化记忆</div>
+    <p style="margin:0"><strong>每个注册教练（不论付不付费）月均给平台贡献约 ¥90</strong>——这是接下来所有计算的基础常数。</p>
+  </div>
+
+  <h3>用户增长 → MRR → ARR · 3 场景</h3>
+
+  <p>下表是教练注册数（含 Free + Paid）月度演变，3 场景对应 BP §10 财务模型：</p>
+
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th>时间</th>
+        <th class="tier-col">
+          <span class="col-label">保守</span>
+          <span class="col-sub">conservative</span>
+        </th>
+        <th class="tier-col b-col">
+          <span class="col-label">水位</span>
+          <span class="col-sub">base case</span>
+        </th>
+        <th class="tier-col">
+          <span class="col-label">乐观</span>
+          <span class="col-sub">optimistic</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="divider"><td colspan="4">📊 教练数（含 Free + Paid）</td></tr>
+      <tr><td class="row-label">M3</td><td class="num">15</td><td class="num heat">30</td><td class="num">50</td></tr>
+      <tr><td class="row-label">M6</td><td class="num">50</td><td class="num heat">100</td><td class="num">200</td></tr>
+      <tr><td class="row-label">M9</td><td class="num">90</td><td class="num heat">180</td><td class="num">320</td></tr>
+      <tr><td class="row-label">M12</td><td class="num">180</td><td class="num heat">280</td><td class="num">500</td></tr>
+      <tr><td class="row-label">M24</td><td class="num">450</td><td class="num heat">700</td><td class="num">1,200</td></tr>
+      <tr><td class="row-label">M36</td><td class="num">850</td><td class="num heat">1,100</td><td class="num">1,500+</td></tr>
+
+      <tr class="divider"><td colspan="4">💰 月营业额 MRR = 教练数 × ¥90</td></tr>
+      <tr><td class="row-label">M3</td><td class="num">¥1,350</td><td class="num heat">¥2,700</td><td class="num">¥4,500</td></tr>
+      <tr><td class="row-label">M6</td><td class="num">¥4,500</td><td class="num heat">¥9,000</td><td class="num">¥18,000</td></tr>
+      <tr><td class="row-label">M9</td><td class="num">¥8,100</td><td class="num heat">¥16,200</td><td class="num">¥28,800</td></tr>
+      <tr><td class="row-label">M12</td><td class="num">¥16,200</td><td class="num heat">¥25,200</td><td class="num">¥45,000</td></tr>
+      <tr><td class="row-label">M24</td><td class="num">¥40,500</td><td class="num heat">¥63,000</td><td class="num">¥108,000</td></tr>
+      <tr><td class="row-label">M36</td><td class="num">¥76,500</td><td class="num heat">¥99,000</td><td class="num">¥135,000+</td></tr>
+
+      <tr class="divider"><td colspan="4">📈 年营业额 ARR = MRR × 12</td></tr>
+      <tr><td class="row-label">M12</td><td class="num">¥19.4w</td><td class="num heat">¥30.2w</td><td class="num">¥54w</td></tr>
+      <tr><td class="row-label">M24</td><td class="num">¥48.6w</td><td class="num heat">¥75.6w</td><td class="num">¥129.6w</td></tr>
+      <tr class="total-row">
+        <td>M36 ARR</td>
+        <td class="num">¥91.8w</td>
+        <td class="num">¥118.8w</td>
+        <td class="num">¥162w+</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-label">关键公式</div>
+    <p style="margin:0; font-family:var(--mono); line-height:1.9;">
+      <code style="background:var(--surface-2); padding:3px 10px; color:var(--heat); border:none;">MRR = 教练数 × ¥90 加权 ARPU</code><br>
+      <code style="background:var(--surface-2); padding:3px 10px; color:var(--heat); border:none;">ARR = MRR × 12</code>
+    </p>
+    <p style="margin:14px 0 0;"><strong>Base case M36：</strong>1,100 教练 × ¥90 × 12 = <strong style="color:var(--heat); font-size:18px;">¥118.8w ARR</strong></p>
+  </div>
+
+  <h3>用户漏斗 · 触达 → 试用 → 付费</h3>
+
+  <p>每月触达多少教练？多少进入试用？多少升级付费？base case 漏斗：</p>
+
+  <pre>┌──────────────────────────────────────────────────────┐
+│ 触达池（每月独立触达教练数）              ~500 人/月  │
+│ ├ 小红书 / 知乎内容 ............... 200             │
+│ ├ KOL 合作 ........................  80             │
+│ ├ 教练社群运营 ....................  70             │
+│ ├ 赛事地推 ........................ 150             │
+│ └ 转介绍 ..........................  ~50（M6+ 起飞）│
+└──────────────────────────────────────────────────────┘
+                       ↓  12% 综合转化（点击 → 试用）
+            60 教练 / 月 试用注册
+                       ↓  70% 完成 onboarding
+            42 教练 / 月 active free user
+                       ↓  Free → Paid 转化 25–35%
+       M12 base：30 教练 / 月 升级付费
+       （≈ 12 个 ¥99 / 5 个 ¥149 / 2 个 ¥499）
+                       ↓  减去 6% 月流失
+            净增长 ≈ 25 教练 / 月</pre>
+
+  <div class="callout warn">
+    <div class="callout-label">⚠ 关键瓶颈</div>
+    <p style="margin:0">最大的不确定<strong>不是触达池有多大</strong>，是 <strong>Free → Paid 转化率</strong>。<br><br>如果只有 15%（vs 假设 30%），M12 付费数只剩 140，36 月 ARR 跌到 <strong>¥15w</strong>——直接砍掉一半。<br><br>这就是为什么 MVP 上线后 M3 是关键节点：<strong>首批 30 教练真实付费数据会校准这个核心参数</strong>。</p>
+  </div>
+
+  <h3>敏感性 · 哪个杠杆最猛</h3>
+
+  <p>3 个核心变量 ±1 单位对 36 月 ARR 的影响：</p>
+
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th>变量</th>
+        <th class="num">基线</th>
+        <th class="num">改善后</th>
+        <th class="num">36 月 ARR 变化</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="row-label heat-cell">月流失率 Churn ↓</td>
+        <td class="num">6%</td>
+        <td class="num heat">5%</td>
+        <td class="num heat">+18%</td>
+      </tr>
+      <tr>
+        <td class="row-label">加权 ARPU ↑</td>
+        <td class="num">¥90</td>
+        <td class="num">¥100</td>
+        <td class="num">+11%</td>
+      </tr>
+      <tr>
+        <td class="row-label">CAC ↓</td>
+        <td class="num">¥300</td>
+        <td class="num">¥250</td>
+        <td class="num">LTV/CAC 4.5× → 5.4×</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-label">结论</div>
+    <p style="margin:0"><strong>降 churn 是最高 ROI 杠杆</strong>——好产品 + 教练社群运营 + 续费提醒 = 留存。比拼命拉新更划算 18%。这是产品和运营该把 80% 精力投入的方向。</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ §6 · Returns ═══════════════════ -->
+<section>
+  <div class="section-head">
+    <div class="section-num">06</div>
     <div class="section-meta">
       <div class="section-kicker">Returns</div>
       <h2>回报预期</h2>
@@ -1616,10 +1808,10 @@
   <p style="font-style: italic; color: var(--text-3);">不推荐找：顶级人民币基金（红杉、高瓴等）—— 他们 IRR 要求 30%+，这个标对他们而言"小而精但回报曲线不够性感"。</p>
 </section>
 
-<!-- ═══════════════════ §6 ═══════════════════ -->
+<!-- ═══════════════════ §7 · Decision Matrix ═══════════════════ -->
 <section>
   <div class="section-head">
-    <div class="section-num">06</div>
+    <div class="section-num">07</div>
     <div class="section-meta">
       <div class="section-kicker">Decision Matrix</div>
       <h2>选哪档？</h2>
